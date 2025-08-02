@@ -1,0 +1,19 @@
+ul.swiper-wrapper {
+    padding-left: 0;
+}
+.slider-buttons {
+    display: none !important;
+}
+.product-media-container.constrain-height .media {
+    padding-top: 98% !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000 !important;
+}
+.slider-buttons {
+  display: none !important;
+}
+.swiper-pagination-bullet {
+    background: #000 !important;
+}

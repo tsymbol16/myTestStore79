@@ -128,7 +128,7 @@
         "gallery_layout": "stacked",
         "mobile_thumbnails": "hide",
         "media_position": "left",
-        "image_zoom": "lightbox",
+        "image_zoom": "none",
         "show_pagination": true,
         "show_buttons": true,
         "slides_count": 1,

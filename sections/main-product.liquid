@@ -680,6 +680,50 @@
             {{ 'products.product.view_full_details' | t }}
             {{- 'icon-arrow.svg' | inline_asset_content -}}
           </a>
+
+{% comment %} custom metafields dropdown {% endcomment %}
+         
+          
+      {% if product.metafields.custom.size != blank and product.metafields.custom.size_description != blank %}
+        <div class="product__accordion accordion quick-add-hidden">
+      <details {%if section.settings.is_open == '1' or section.settings.is_open == '2'%} open {% endif %} >
+            <summary>
+              <div class="summary__title">
+                <h2 class="h4 accordion__title inline-richtext">
+                  {{product.metafields.custom.size}} 
+                </h2>
+              </div>
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </summary>
+            <div class="accordion__content rte" >
+              {{product.metafields.custom.size_description}} 
+            </div>
+          </details>
+        </div>
+        {% endif %}
+      {% if product.metafields.custom.material != blank and product.metafields.custom.material_description != blank %}
+        
+      <div class="product__accordion accordion quick-add-hidden">
+      <details {%if section.settings.is_open == '2'%} open {% endif %}>
+          <summary>
+            <div class="summary__title">
+              <h2 class="h4 accordion__title inline-richtext">
+                {{product.metafields.custom.material}} 
+              </h2>
+            </div>
+            {{- 'icon-caret.svg' | inline_asset_content -}}
+          </summary>
+          <div class="accordion__content rte" ">
+            {{product.metafields.custom.material_description}} 
+          </div>
+        </details>
+        </div>
+        
+      {% endif %}
+                
+                
+
+
         </section>
       </div>
     </div>
@@ -2229,6 +2273,30 @@
     },
     {
       "type": "checkbox",
+      "id": "show_pagination",
+      "default": false,
+      "label": "show swiper pagination"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_buttons",
+      "default": false,
+      "label": "show swiper buttons"
+    },
+    {
+    "type": "number",
+    "id": "slides_count",
+    "label": "Slides per view",
+    "default": 1
+    },
+    {
+    "type": "number",
+    "id": "slides_gap",
+    "label": "Slides gap",
+    "default": 30
+    },
+    {
+      "type": "checkbox",
       "id": "hide_variants",
       "default": false,
       "label": "t:sections.main-product.settings.hide_variants.label"
@@ -2262,7 +2330,27 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    }
+    },
+    {
+      "type": "select",
+      "id": "is_open",
+      "options": [
+        {
+          "value": "0",
+          "label": "all accordions closed"
+        },
+        {
+          "value": "1",
+          "label": "one accordion open"
+        },
+        {
+          "value": "2",
+          "label": "two accordions open"
+        }
+      ],
+      "default": "0",
+      "label": "How many metafields accordions is opened"
+    },
   ]
 }
 {% endschema %}

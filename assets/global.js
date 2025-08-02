@@ -1330,3 +1330,33 @@ class CartPerformance {
     );
   }
 }
+
+class GallerySlider extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.initSwiperGallery();
+  }
+
+  initSwiperGallery() {
+    const slider = this.querySelector('.swiper');
+    if (!slider) return
+    const gap = Number(this.dataset.galleryGap);
+    const slidesCount = Number(this.dataset.gallerySlides);
+    const swiper = new Swiper(slider, {
+      slidesPerView: slidesCount,
+      spaceBetween: gap,
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+}
+
+customElements.define('gallery-slider', GallerySlider);
